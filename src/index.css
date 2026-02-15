@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 215 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 15%;
+
+    --primary: 210 85% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 94%;
+    --secondary-foreground: 215 25% 25%;
+
+    --muted: 210 30% 95%;
+    --muted-foreground: 215 15% 50%;
+
+    --accent: 195 85% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 25% 90%;
+    --input: 210 25% 90%;
+    --ring: 210 85% 55%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(210, 85%, 55%), hsl(195, 85%, 50%));
+    --gradient-hero: linear-gradient(135deg, hsl(210, 40%, 98%), hsl(210, 60%, 95%), hsl(195, 50%, 95%));
+    --gradient-glass: linear-gradient(135deg, hsla(0, 0%, 100%, 0.8), hsla(210, 50%, 98%, 0.6));
+    --shadow-glass: 0 8px 32px hsla(210, 50%, 50%, 0.08);
+    --shadow-card: 0 4px 24px hsla(210, 50%, 50%, 0.06);
+    --shadow-elevated: 0 12px 40px hsla(210, 50%, 50%, 0.12);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 210 85% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 94%;
+    --sidebar-accent-foreground: 215 25% 25%;
+    --sidebar-border: 210 25% 90%;
+    --sidebar-ring: 210 85% 55%;
+
+    /* Status colors */
+    --success: 152 60% 45%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 55%;
+    --warning-foreground: 0 0% 100%;
+    --info: 210 85% 55%;
+    --info-foreground: 0 0% 100%;
+    --status-healthy: 152 60% 45%;
+    --status-warning: 38 92% 55%;
+    --status-critical: 0 72% 55%;
+    --status-pending: 38 92% 55%;
+    --status-verified: 152 60% 45%;
+  }
+
+  .dark {
+    --background: 215 30% 8%;
+    --foreground: 210 40% 95%;
+    --card: 215 30% 12%;
+    --card-foreground: 210 40% 95%;
+    --popover: 215 30% 12%;
+    --popover-foreground: 210 40% 95%;
+    --primary: 210 85% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 215 25% 18%;
+    --secondary-foreground: 210 40% 95%;
+    --muted: 215 25% 18%;
+    --muted-foreground: 215 15% 60%;
+    --accent: 195 85% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 215 25% 20%;
+    --input: 215 25% 20%;
+    --ring: 210 85% 55%;
+    --sidebar-background: 215 30% 10%;
+    --sidebar-foreground: 210 40% 95%;
+    --sidebar-primary: 210 85% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 25% 18%;
+    --sidebar-accent-foreground: 210 40% 95%;
+    --sidebar-border: 215 25% 20%;
+    --sidebar-ring: 210 85% 55%;
+    --status-healthy: 152 60% 45%;
+    --status-warning: 38 92% 55%;
+    --status-critical: 0 62.8% 50%;
+    --status-pending: 38 92% 55%;
+    --status-verified: 152 60% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-xl border border-white/40 rounded-2xl;
+    box-shadow: var(--shadow-glass);
+  }
+
+  .glass-card-strong {
+    @apply bg-white/85 backdrop-blur-2xl border border-white/50 rounded-2xl;
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .progress-bar {
+    @apply h-1.5 rounded-full overflow-hidden;
+    background: hsl(var(--muted));
+  }
+
+  .progress-bar-fill {
+    @apply h-full rounded-full transition-all duration-500 ease-out;
+    background: var(--gradient-primary);
+  }
+
+  .form-step-enter {
+    animation: fadeSlideIn 0.4s ease-out;
+  }
+
+  @keyframes fadeSlideIn {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+}
